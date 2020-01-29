@@ -1,8 +1,9 @@
-docker exec -it --user root -w /tensorflow/models/research/volume/ tf_main bash ./organization_shell_scripts/stopTraining.sh
+#docker exec -it --user root -w /tensorflow/models/research/volume/ tf_main bash ./organization_shell_scripts/stopTraining.sh
+pkill -f train.py;
 
-cd /home/teder/mustererkennung_te_pg/volume/training
-array_Filenames=($(ls -d model.ckpt-*))
-array_ModelVersionNum=()
+cd /tensorflow/models/research/volume/training;
+array_Filenames=($(ls -d model.ckpt-*));
+array_ModelVersionNum=();
 
 for i in "${array_Filenames[@]}"
 do
@@ -20,5 +21,8 @@ do
     max=$( (( $max < $i )) && echo "$i" || echo "$max" )
 done
 
-docker exec -it --user root -e PYTHONPATH=$PYTHONPATH:/tensorflow/models/research:/tensorflow/models/research/slim -w /tensorflow/models/research/volume/ tf_main bash ./organization_shell_scripts/createPB.sh $max
+cd /tensorflow/models/research/volume/scripts/bash
+
+./createPB.sh $max
+
 

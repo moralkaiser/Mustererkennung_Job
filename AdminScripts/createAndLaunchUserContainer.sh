@@ -4,9 +4,11 @@ if [ ! -z $1 ]; then
 	./createUserDir.sh $1
 	#./loadPretrainedModel.sh $1
 	./registerContainer.sh $1
-	#./launchDockerContainer.sh $1
+
 	./copyScripts.sh $1
 	./copyTFModels.sh $1
+	./launchDockerContainer.sh $1
+	./startContainerPhpApi.sh $1
 
 	GREEN='\e[32m'
 	NC='\033[0m' # No Color

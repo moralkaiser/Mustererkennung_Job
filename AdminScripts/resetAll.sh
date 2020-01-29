@@ -15,6 +15,7 @@ read  -n 1 -p "This script delete All Container and All User Files. Proceed? (Y/
 			for i in "${arrayUserhandles[@]}"
 			do
 				./removeUserContainer.sh $i
+				./killDockerContainer.sh $i
 			done
                 
 			else

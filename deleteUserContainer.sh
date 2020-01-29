@@ -12,7 +12,7 @@ if [ ! -z $1 ]; then
 			./checkIfUserhandleExists.sh $1
 			if [ $? == 1 ]; then
 				./killDockerContainer.sh $1
-                ./removeUserContainer.sh $1
+               			./removeUserContainer.sh $1
 			else
 				RED='\033[0;31m'
 				NC='\033[0m' # No Color

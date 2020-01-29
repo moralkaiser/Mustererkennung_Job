@@ -6,7 +6,7 @@ if [ ! -z $1 ]; then
 	cd Resources
 	cp ./BashScripts/* "../UserContainerVolumes/$1/scripts/bash"
 	cp ./PythonScripts/FormatConverting/* "../UserContainerVolumes/$1/scripts/python"
-	cp ./PythonScripts/train.py "../UserContainerVolumes/$1/"
+	cp ./PythonScripts/* "../UserContainerVolumes/$1/"
 	
 else
 	RED='\033[0;31m'

@@ -1,5 +1,6 @@
-FROM tensorflow/tensorflow:1.9.0-devel-gpu
-RUN apt-get update && apt-get install -y git nano vim wget
+FROM tensorflow/tensorflow:devel-gpu
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y git nano vim wget php
 WORKDIR ~/
 RUN pip install --upgrade pip
 RUN apt-get install -y python3-pip 
@@ -8,7 +9,8 @@ RUN pip install pillow jupyter matplotlib pandas
 RUN pip3 install --upgrade setuptools
 RUN pip3 install --upgrade pip
 RUN pip3 install pandas
-RUN pip3 install tensorflow
+RUN pip3 install tensorflow==1.15
+RUN pip3 install sklearn
 RUN pip3 install pillow
 RUN pip3 install lxml
 RUN pip3 install jupyter
@@ -30,3 +32,4 @@ WORKDIR cocoapi/PythonAPI
 RUN make
 WORKDIR /tensorflow/models/research
 RUN cp -r cocoapi/PythonAPI/pycocotools .
+ENV PYTHONPATH=$PYTHONPATH:/tensorflow/models/research:/tensorflow/models/research/slim

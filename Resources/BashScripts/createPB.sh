@@ -2,7 +2,11 @@ volumeDir=/tensorflow/models/research/volume
 
 rm -rf /tensorflow/models/research/volume/frozen-graph/saved_model
 mkdir /tensorflow/models/research/volume/frozen-graph/saved_model
-cd $volumedir
+chmod -R 777 /tensorflow/models/research/volume/frozen-graph/
+chmod -R 777 /tensorflow/models/research/volume/frozen-graph/saved_model
+#chmod -R 777 /tensorflow/models/research/volume/frozen-graph/saved_model/variables
+
+cd $volumeDir
 python3 export_inference_graph.py \
     --input_type=image_tensor \
     --pipeline_config_path=training/ssd_inception_v2_coco.config \
@@ -29,8 +33,10 @@ do
 done
 
 mkdir $((maxVersion+1))
+chmod -R 777 ./$((maxVersion+1))
+
 cd ./$((maxVersion+1))
 cp $volumeDir/frozen-graph/saved_model/saved_model.pb saved_model.pb
 cp -rf $volumeDir/frozen-graph/saved_model/variables .
 
-cp $volumeDir/frozen-graph/frozen_inference_graph.pb $volumeDir/testing/
+chmod -R 777 /tensorflow/models/research/volume/frozen-graph/saved_model/variables

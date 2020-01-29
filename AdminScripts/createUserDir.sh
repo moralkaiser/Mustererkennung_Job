@@ -17,6 +17,7 @@ if [ ! -z $1 ]; then
 	mkdir images
 	mkdir trained-model
 	mkdir training
+	mkdir frozen-graph
 	mkdir pre-trained-model
 	
     mkdir -p scripts/bash
