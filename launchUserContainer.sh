@@ -5,7 +5,7 @@ if [ ! -z $1 ]; then
 	cd AdminScripts
 	./checkIfUserhandleExists.sh $1
 	if [ $? == 0 ]; then
-		./createAndLaunchUserContainer.sh $1
+		./createAndLaunchUserContainer.sh $1 $2
 	else
 		RED='\033[0;31m'
 		NC='\033[0m' # No Color

@@ -2,6 +2,7 @@
 # Including folders for images, annotations etc.
 
 if [ ! -z $1 ]; then
+if [ ! -z $2 ]; then
 	cd ..
 	cd UserContainerVolumes
 	mkdir $1 
@@ -9,8 +10,9 @@ if [ ! -z $1 ]; then
 
 	# Ressource for later Docker Opperations
 
-	touch userhandle.csv
-	echo "userhandle,$1" >> userhandle.csv
+	touch config.csv
+	echo "userhandle,$1" >> config.csv
+	echo "jupyterport,$2" >> config.csv
 
 	mkdir scripts
 	mkdir annotations
@@ -25,6 +27,12 @@ if [ ! -z $1 ]; then
     mkdir -p annotations/csv
     mkdir -p annotations/csv/test
     mkdir -p annotations/csv/train
+else
+	RED='\033[0;31m'
+        NC='\033[0m' # No Color
+        echo -e "$0 :: ${RED}Error${NC} : Insert Port for JupyterNotebook!"
+
+fi
 else
 	RED='\033[0;31m'
 	NC='\033[0m' # No Color
