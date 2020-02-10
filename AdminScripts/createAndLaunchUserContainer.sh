@@ -3,14 +3,14 @@
 if [ ! -z $1 ]; then
 if [ ! -z $2 ]; then
 	./createUserDir.sh $1 $2
-	#./loadPretrainedModel.sh $1
+	./copyJupyterModelTesting.sh $1
 	./registerContainer.sh $1
 
 	./copyScripts.sh $1
 	./copyTFModels.sh $1
 	./launchDockerContainer.sh $1
 	./startContainerPhpApi.sh $1
-
+	
 	GREEN='\e[32m'
 	NC='\033[0m' # No Color
 	echo -e "$0 :: ${GREEN}$1 Container created${NC}"

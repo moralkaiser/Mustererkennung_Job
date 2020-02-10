@@ -33,3 +33,4 @@ RUN make
 WORKDIR /tensorflow/models/research
 RUN cp -r cocoapi/PythonAPI/pycocotools .
 ENV PYTHONPATH=$PYTHONPATH:/tensorflow/models/research:/tensorflow/models/research/slim
+EXPOSE 8888

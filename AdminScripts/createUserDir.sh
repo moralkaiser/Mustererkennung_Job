@@ -21,12 +21,14 @@ if [ ! -z $2 ]; then
 	mkdir training
 	mkdir frozen-graph
 	mkdir pre-trained-model
+	mkdir testing
 	
     mkdir -p scripts/bash
     mkdir -p scripts/python
     mkdir -p annotations/csv
     mkdir -p annotations/csv/test
     mkdir -p annotations/csv/train
+    mkdir -p testing/images
 else
 	RED='\033[0;31m'
         NC='\033[0m' # No Color
